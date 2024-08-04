@@ -108,6 +108,14 @@ return {
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      vim.keymap.set('n', '<leader>spf', function()
+        builtin.find_files { cwd = vim.fn.fnamemodify(vim.fn.finddir('.git', '.;'), ':h') }
+      end, { desc = '[S]earch [P]roject [F]iles' })
+
+      vim.keymap.set('n', '<leader>spg', function()
+        builtin.live_grep { cwd = vim.fn.fnamemodify(vim.fn.finddir('.git', '.;'), ':h') }
+      end, { desc = '[S]earch [P]roject by [G]rep' })
     end,
   },
 }
