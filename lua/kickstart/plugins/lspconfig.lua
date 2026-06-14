@@ -80,6 +80,9 @@ return {
           -- Find references for the word under your cursor.
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
+          -- Find and populate quick fix list with references for the word under your cursor.
+          map('gR', vim.lsp.buf.references, '[G]oto List [R]eferences')
+
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
           map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
@@ -168,8 +171,23 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {},
-        gopls = {},
+        gopls = {
+          settings = {
+            gopls = {
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+              },
+            },
+          },
+        },
         pyright = {},
+        ruby_lsp = {},
         rust_analyzer = {},
         zls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs

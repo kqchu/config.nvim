@@ -69,4 +69,13 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- vim: ts=2 sts=2 sw=2 et
+-- Set the conceal level for characters (Obsidian.nvim recommends to set the 'conceallevel' to 1 or 2)
+vim.opt.conceallevel = 1
+
+-- Set column at '80' character width for my own formatting
+vim.opt.colorcolumn = '80'
+
+-- Enable diff options for better diff viewing
+vim.opt.diffopt = 'filler,internal,closeoff,indent-heuristic,algorithm:histogram,linematch:60'
+
+-- vim; ts=2 sts=2 sw=2 et

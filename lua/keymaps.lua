@@ -45,4 +45,30 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- [[ Custom Keymaps ]]
+-- These mappings control the size of splits (height/width)
+vim.keymap.set('n', '<M-,>', '<c-w>5<', { desc = 'Decrease width of split' })
+vim.keymap.set('n', '<M-.>', '<c-w>5>', { desc = 'Increase width of split' })
+vim.keymap.set('n', '<M-+>', '<C-W>+', { desc = 'Increase height of split' })
+vim.keymap.set('n', '<M-->', '<C-W>-', { desc = 'Decrease height of split' })
+
+-- Join multiple (at least 2) lines, jumping back to z mark
+vim.keymap.set('n', 'J', 'mzJ`z')
+
+-- Re-center buffer after jump navigation
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+
+-- Deletes current selection to blackhole register and paste above, visual mode (mapmode-x)
+vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Replace current selection with text in clipboard' })
+
+-- Yank to system clipboard
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank to system clipboard' })
+vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = 'Yank till end of line to system clipboard' })
+
+-- Delete to blackhole register
+vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = 'Delete to blackhole register' })
+
 -- vim: ts=2 sts=2 sw=2 et
